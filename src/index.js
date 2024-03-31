@@ -24,6 +24,7 @@ app.get('/news', (req, res) => {
 })
 
 // joining __dirname with 'public' directory, means: __dirname == /public/...
+// so localhost3030/img/logo.png == localhost3030'/public/'/img/logo.png
 app.use(express.static(path.join(__dirname, 'public')))
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`)
