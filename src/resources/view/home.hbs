@@ -5,7 +5,10 @@
         {{#each courses}}
         <div class="col-sm-6 col-lg-4">
             <div class="card card-item">
-                <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
+                <a href="/character/{{slug}}">
+                    <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
+                </a>
+                
                 <div class="card-body">
                     <h5 class="card-title">{{this.name}}</h5>
                     <p class="card-text">{{this.description}}</p>
