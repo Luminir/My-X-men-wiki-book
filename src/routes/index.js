@@ -1,5 +1,6 @@
 const newsRouter = require('./news'); // ./news = news.js
 const siteRouter = require('./site'); // ./site = site.js
+const characterRouter = require('./character') // ./character = character.js
 
 // tạo 1 funciton tên bất kì
 function route(app) {
@@ -13,6 +14,7 @@ function route(app) {
 //   return res.render('search')
 // })
 app.use('/news', newsRouter);
+app.use('/character', characterRouter);
 app.use('/', siteRouter);
 }
 // biến nó thành public file cho cả project
