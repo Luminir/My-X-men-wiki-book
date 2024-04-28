@@ -14,13 +14,13 @@ class CharacterController {
         }
     }
 
-    // [GET]/ courses/create
+    // [GET]/ characters/create
     create(req, res, next) {
         // res.send('Character Detail')
         res.render('courses/create')
     }
 
-    // [POST]/courses/store
+    // [POST]/characters/store
     async store(req, res, next) {
         // res.send('Character Detail')
         // res.json(req.body)
@@ -49,20 +49,27 @@ class CharacterController {
     }
 
     // [GET] /characters/:id/edit
-    edit(req, res, next){
-        Course.findById(req.params.id)
+    async edit(req, res, next){
+        await Course.findById(req.params.id)
         .then(course => res.render('courses/edit', {
             course: mongooseToObject(course)
         }))
         .catch(next);
     }
 
-    // [PUT] /courses/:id
+    // [PUT] /characters/:id
     async update(req, res, next) {
         // res.json(req.body)
         await Course.updateOne({ _id: req.params.id }, req.body)
         .then(() => res.redirect('/me/stored/characters'))
         .catch(next);
+    }
+
+    // [DELETE] /characters/:id
+    async delete(req, res, next){
+        await Course.deleteOne({ _id: req.params.id })
+        .then(() => res.redirect('back'))
+        .catch(next)
     }
 }
 

@@ -7,7 +7,8 @@ const characterController = require('../app/controllers/CharacterController');
 router.get('/create', characterController.create);
 router.post('/store', characterController.store);
 router.get('/:id/edit', characterController.edit);
-router.put('/:id', characterController.update);
+router.put('/:id', characterController.update); // update
+router.delete('/:id', characterController.delete)
 router.get('/:slug', characterController.show);
 // router.get('/', newsController.index);
 

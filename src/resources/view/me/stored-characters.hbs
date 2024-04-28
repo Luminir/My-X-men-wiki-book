@@ -1,12 +1,12 @@
 <div class="mt-4 ms-5 me-5">
-    <h3>Khóa học của tôi</h3>
+    <h3>My characters</h3>
 
         <table class="table">
         <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Character</th>
-                <th scope="col">Level</th>
+                <th scope="col">Mutant Level</th>
                 <th scope="col">Created time</th>
                 <th scope="col"></th>
             </tr>
@@ -21,10 +21,61 @@
                 <td>{{this.createdAt}}</td>
                 <td>
                     <a href="/character/{{this._id}}/edit" class="btn btn-primary">Update</a>
-                    <a href="" class="btn btn-danger">Delete</a>
+                    <a href="" class="btn btn-danger" data-bs-id="{{this._id}}" data-bs-toggle="modal" data-bs-target="#delete-character-modal">Delete</a>
                 </td>
             </tr>
             {{/each}}
         </tbody>
     </table>
 </div>
+
+{{!-- Confirm to delete your created characters --}}
+<div class="modal" tabindex="-1" id="delete-character-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete this character?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Do you want to delete this character you created from the database?</p>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete-character" type="button" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- hidden "delete character font" form ( we do not want to show ppl this font) --}}
+<form  name="delete-character-form" method="POST"></form>
+
+<script>
+    var characterId;
+    var deleteForm = document.forms['delete-character-form']; // WILL RETURN THIS: <form  name="delete-character-form" method="POST"></form>
+    var btnDeleteCharacter = document.getElementById('btn-delete-character');
+    // console.log(btnDeleteCharacter);
+
+    const deleteCharacterModal = document.getElementById('delete-character-modal')
+    if (deleteCharacterModal) {
+        deleteCharacterModal.addEventListener('show.bs.modal', event => {
+            // Button that triggered the modal
+            const button = event.relatedTarget
+            // Extract info from data-bs-* attributes
+            characterId = button.getAttribute('data-bs-id')
+            // console.log(characterId);
+
+            // Stop the event from bubbling up
+            event.stopPropagation();
+        })
+    }
+
+    // WHEN CLICKED delete button
+    
+    btnDeleteCharacter.onclick = function(){
+        // alert(characterId);
+        deleteForm.action = '/character/' + characterId + "?_method=DELETE"; // PUT this into the <form>
+        deleteForm.submit(); // submit this <form> to delete
+    }
+</script>
