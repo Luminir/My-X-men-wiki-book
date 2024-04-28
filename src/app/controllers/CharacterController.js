@@ -47,6 +47,23 @@ class CharacterController {
             next(error)
         }
     }
+
+    // [GET] /characters/:id/edit
+    edit(req, res, next){
+        Course.findById(req.params.id)
+        .then(course => res.render('courses/edit', {
+            course: mongooseToObject(course)
+        }))
+        .catch(next);
+    }
+
+    // [PUT] /courses/:id
+    async update(req, res, next) {
+        // res.json(req.body)
+        await Course.updateOne({ _id: req.params.id }, req.body)
+        .then(() => res.redirect('/me/stored/characters'))
+        .catch(next);
+    }
 }
 
 // xuất thành file public cho cả project

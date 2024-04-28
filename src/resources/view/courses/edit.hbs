@@ -1,0 +1,26 @@
+<div class="mt-2 p-5">
+    <h3 class="text-center">Edit this Mutant</h3>
+    {{!-- Để action='' thì nó sẽ act ngay trong phương thức res.render luôn --}}
+    <form  method="POST" action="/character/{{course._id}}?_method=PUT">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name of character:</label>
+            <input type="text" class="form-control" value="{{course.name}}" id="name" name="name" autocomplete="off">
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description:</label>
+            <textarea class="form-control" id="description" name="description" autocomplete="off">{{course.description}}</textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="videoId" class="form-label">Video ID:</label>
+            <input type="text" class="form-control" value="{{course.videoId}}" id="videoId" name="videoId" autocomplete="off">
+        </div>
+
+        <div class="mb-3">
+            <label for="level" class="form-label">Level:</label>
+            <input type="text" class="form-control" value="{{course.level}}" id="level" name="level" autocomplete="off">
+        </div>
+        <button type="submit" class="btn btn-warning">Update</button>
+    </form>
+</div>

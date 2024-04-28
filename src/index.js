@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 var morgan = require('morgan');
+const methodOverride = require('method-override');
 const { engine } = require('express-handlebars');
 const exp = require('constants');
 const app = express();
@@ -24,11 +25,19 @@ extended: true,
 );
 app.use(express.json());
 
+app.use(methodOverride('_method'))
+
 // HTTPS logger
 // app.use(morgan('combined'))
 
 // Template engine
- app.engine('.hbs', engine({ extname: '.hbs' })); // 'handlebars' = handlebar()
+ app.engine('.hbs', engine({ 
+      extname: '.hbs',
+      helpers: {
+            sum: (a, b) => a + b,
+        } 
+})); // 'handlebars' = handlebar()
+
       app.set('view engine', '.hbs'); // 'view engine' = handlebars()
 app.set('views', path.join(__dirname, 'resources', 'view'));
 // NÓ NGHĨA LÀ THẾ NÀY("Path: ", path.join(__dirname/resources/'views'))

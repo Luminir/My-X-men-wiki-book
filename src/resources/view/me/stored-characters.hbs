@@ -1,0 +1,30 @@
+<div class="mt-4 ms-5 me-5">
+    <h3>Khóa học của tôi</h3>
+
+        <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Character</th>
+                <th scope="col">Level</th>
+                <th scope="col">Created time</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each courses}}
+            <tr>
+                {{!-- 👇👇 from index.js(src): sum(a+b) = sum(index + 1) --}}
+                <th scope="row">{{sum @index 1}}</th>
+                <td>{{this.name}}</td>
+                <td>{{this.level}}</td>
+                <td>{{this.createdAt}}</td>
+                <td>
+                    <a href="/character/{{this._id}}/edit" class="btn btn-primary">Update</a>
+                    <a href="" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
