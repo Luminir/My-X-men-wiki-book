@@ -4,9 +4,20 @@ class MeController {
 
     // [GET] me/stored/characters
     storedCharacters(req, res, next) {
-        // res.send('Character Detail')
-        Course.find({})
-        .then(courses => res.render('me/stored-characters', {
+
+        Promise.all([Course.find({}), Course.countDocumentsDeleted()])
+            .then(([courses, deletedCount]) =>
+                res.render('me/stored-characters', {
+                    deletedCount,
+                    courses: multipleMongooseToObject(courses)
+                })
+            )
+            .catch(next);
+    }
+
+    deletedCharacters(req, res, next) {
+        Course.findDeleted({})
+        .then(courses => res.render('me/deleted-characters', {
             courses: multipleMongooseToObject(courses)
         }))
         .catch(next);

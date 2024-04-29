@@ -8,7 +8,9 @@ router.get('/create', characterController.create);
 router.post('/store', characterController.store);
 router.get('/:id/edit', characterController.edit);
 router.put('/:id', characterController.update); // update
-router.delete('/:id', characterController.delete)
+router.patch('/:id/restore', characterController.restore);
+router.delete('/:id/force', characterController.forceDelete)
+router.delete('/:id', characterController.delete);
 router.get('/:slug', characterController.show);
 // router.get('/', newsController.index);
 

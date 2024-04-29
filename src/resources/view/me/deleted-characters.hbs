@@ -1,7 +1,7 @@
 <div class="mt-4 ms-5 me-5">
     <div>
-      <h3>My characters</h3>
-      <a href="/me/deleted/characters" class="text-decoration-none">🚮 Recycle Bin ({{deletedCount}})</a>
+      <h3>My DELETED characters</h3>
+      <a href="/me/stored/characters" class="text-decoration-none">🔙 Back to "My Characters"</a>
     </div>
 
         <table class="table">
@@ -10,7 +10,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Character</th>
                 <th scope="col">Mutant Level</th>
-                <th scope="col">Created time</th>
+                <th scope="col">Deleted time</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -21,17 +21,17 @@
                 <th scope="row">{{sum @index 1}}</th>
                 <td>{{this.name}}</td>
                 <td>{{this.level}}</td>
-                <td>{{this.createdAt}}</td>
+                <td>{{this.deletedAt}}</td>
                 <td>
-                    <a href="/character/{{this._id}}/edit" class="btn btn-primary">Update</a>
-                    <a href="" class="btn btn-danger" data-bs-id="{{this._id}}" data-bs-toggle="modal" data-bs-target="#delete-character-modal">Delete</a>
+                    <a href="" class="btn btn-primary btn-restore" data-bs-id="{{this._id}}">Restore</a>
+                    <a href="" class="btn btn-danger" data-bs-id="{{this._id}}" data-bs-toggle="modal" data-bs-target="#delete-character-modal">Permanent Delete</a>
                 </td>
             </tr>
             {{else}} <!-- If there are no more data-courses to loop through, print this -->
             <tr>
               <td colspan="5" class="text-center">
-                No mutant characters have been created. 😿😿
-                <a href="/character/create">Create new character</a>
+                Recycle Bin is empty.
+                <a href="/me/stored/characters">Back</a>
               </td>
             </tr>
             {{/each}}
@@ -48,24 +48,28 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Do you want to delete this character you created from the database?</p>
+        <p>Do you want to delete this character you created from the database PERMANENTLY? Cannot restore this.</p>
       </div>
       <div class="modal-footer">
-        <button id="btn-delete-character" type="button" class="btn btn-danger">Delete</button>
+        <button id="btn-delete-character" type="button" class="btn btn-danger">Delete permanently</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
       </div>
     </div>
   </div>
 </div>
 
-{{!-- hidden "delete character font" form ( we do not want to show ppl this font) --}}
+{{!-- hidden "deleted character font" form ( we do not want to show ppl this font) --}}
 <form  name="delete-character-form" method="POST"></form>
+<form  name="restore-character-form" method="POST"></form>
 
 <script>
     var characterId;
     var deleteForm = document.forms['delete-character-form']; // WILL RETURN THIS: <form  name="delete-character-form" method="POST"></form>
+    var restoreForm = document.forms['restore-character-form']; // WILL RETURN THIS: <form  name="restore-character-form" method="POST"></form>
     var btnDeleteCharacter = document.getElementById('btn-delete-character');
     // console.log(btnDeleteCharacter);
+    // var restoreBtn = $('.btn-restore') // if not '$', we HAVE TO document.querySelector(), then LOOP THROUGH ALL to console.log( ALL BUTTONS )
+    var restoreBtn = document.querySelectorAll('.btn-restore');
 
     const deleteCharacterModal = document.getElementById('delete-character-modal')
     if (deleteCharacterModal) {
@@ -85,7 +89,26 @@
     
     btnDeleteCharacter.onclick = function(){
         // alert(characterId);
-        deleteForm.action = '/character/' + characterId + "?_method=DELETE"; // PUT this into the <form>
+        deleteForm.action = '/character/' + characterId + "/force?_method=DELETE"; // PUT this into the <form>
         deleteForm.submit(); // submit this <form> to delete
     }
+
+    restoreBtn.forEach(btn => {
+      // Perform actions on each restore button
+      // console.log(btn);
+
+      // Restore btn clicked
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        // console.log('Restore button clicked');
+
+        var characterId = btn.getAttribute('data-bs-id');
+        // console.log(characterId);
+        restoreForm.action = '/character/' + characterId + "/restore?_method=PATCH"; // PUT this into the <form>
+        // console.log(restoreForm.action);
+        restoreForm.submit();
+      });
+    });
+
+
 </script>

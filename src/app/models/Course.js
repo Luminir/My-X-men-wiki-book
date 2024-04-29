@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 const slug = require('mongoose-slug-generator');
+const mongooseDelete = require('mongoose-delete');
 const { TRUE } = require('node-sass');
-
-mongoose.plugin(slug);
 
 const Schema = mongoose.Schema;
 
@@ -16,6 +15,13 @@ const Course = new Schema({
     level: {type: String, maxLength: 255},
     slug: {type: String, slug:'name'}, // turning name into a slug // slug will be unique - không bị trùng
   }, {timestamps: true}); // auto create createAt and updateAt
+
+  // Add plugins
+  mongoose.plugin(slug);
+  Course.plugin(mongooseDelete, { 
+    deletedAt : true,
+    overrideMethods: true, 
+  });
 
   // export
   module.exports = mongoose.model('Course', Course);

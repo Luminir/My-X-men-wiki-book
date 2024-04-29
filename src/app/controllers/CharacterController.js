@@ -14,20 +14,19 @@ class CharacterController {
         }
     }
 
-    // [GET]/ characters/create
+    // [GET]/ character/create
     create(req, res, next) {
         // res.send('Character Detail')
         res.render('courses/create')
     }
 
-    // [POST]/characters/store
+    // [POST]/character/store
     async store(req, res, next) {
         // res.send('Character Detail')
         // res.json(req.body)
         // res.send('NEW CHARACTER SAVED!');
         try{
-            const formData = req.body;
-            formData.image = `http://img.youtube.com/vi/${req.body.videoId}/sddefault.jpg`;
+            req.body.image = `http://img.youtube.com/vi/${req.body.videoId}/sddefault.jpg`;
             const character = new Course(req.body);
             await character.save()
             .then(doc => {
@@ -42,13 +41,13 @@ class CharacterController {
                   console.log(err);
                 }
               });
-            res.redirect('/');
+            res.redirect('/me/stored/characters');
         }catch(error){
             next(error)
         }
     }
 
-    // [GET] /characters/:id/edit
+    // [GET] /character/:id/edit
     async edit(req, res, next){
         await Course.findById(req.params.id)
         .then(course => res.render('courses/edit', {
@@ -57,7 +56,7 @@ class CharacterController {
         .catch(next);
     }
 
-    // [PUT] /characters/:id
+    // [PUT] /character/:id
     async update(req, res, next) {
         // res.json(req.body)
         await Course.updateOne({ _id: req.params.id }, req.body)
@@ -65,11 +64,25 @@ class CharacterController {
         .catch(next);
     }
 
-    // [DELETE] /characters/:id
-    async delete(req, res, next){
-        await Course.deleteOne({ _id: req.params.id })
+    // [DELETE] /character/:id/force
+    forceDelete(req, res, next){
+        Course.deleteOne({ _id: req.params.id })
         .then(() => res.redirect('back'))
-        .catch(next)
+        .catch(next);
+    }
+
+    // [DELETE] /character/:id
+    delete(req, res, next){
+        Course.delete({ _id: req.params.id })
+        .then(() => res.redirect('back'))
+        .catch(next);
+    }
+
+    // [PATCH] /character/:id/restore
+    restore(req, res, next) {
+        Course.restore({ _id: req.params.id })
+        .then(() => res.redirect('back'))
+        .catch(next);
     }
 }
 
