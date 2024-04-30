@@ -1,16 +1,23 @@
 <div class="mt-4 ms-5 me-5">
     <div>
       <h3>My characters</h3>
-      <a href="/me/deleted/characters" class="text-decoration-none">🚮 Recycle Bin ({{deletedCount}})</a>
+      <a href="/me/deleted/characters" class="text-decoration-none">🚮 Recycle Bin</a>
     </div>
-
+    {{_sort.type}}
         <table class="table">
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Character</th>
-                <th scope="col">Mutant Level</th>
-                <th scope="col">Created time</th>
+                <th scope="col">Character
+                  {{{sortable 'name' _sort}}} {{!-- sortable(fieldName, sort), IN INDEX.JS --}}
+                  {{!-- <a href="?_sort&column=name&type=desc" style="font-size:15px"><button><i class="fa fa-arrows-v"></i></button></a> --}}
+                </th>
+                <th scope="col">Mutant Level
+                  {{{sortable 'level' _sort}}} {{!-- sortable(fieldName, sort), IN INDEX.JS --}}
+                </th>
+                <th scope="col">Created time
+                  {{{sortable 'createdAt' _sort}}} {{!-- sortable(fieldName, sort), IN INDEX.JS --}}
+                </th>
                 <th scope="col"></th>
             </tr>
         </thead>

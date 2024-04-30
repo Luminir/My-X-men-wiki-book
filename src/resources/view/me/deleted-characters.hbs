@@ -29,14 +29,14 @@
                   </td>
                  </tr>
               {{/if}}
-            {{else}} <!-- If there are no more data-courses to loop through, print this -->
+            {{/each}}
+            {{#unless anyDeleted}} <!-- If there are no more data-courses to loop through, print this -->
             <tr>
               <td colspan="5" class="text-center">
-                Recycle Bin is empty.
                 <a href="/me/stored/characters">Back</a>
               </td>
             </tr>
-            {{/each}}
+            {{/unless}}
         </tbody>
     </table>
 </div>

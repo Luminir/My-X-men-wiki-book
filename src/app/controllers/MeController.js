@@ -4,8 +4,20 @@ class MeController {
 
     // [GET] me/stored/characters
     storedCharacters(req, res, next) {
+        // res.json(res.locals._sort);
 
-        Promise.all([Course.find({}), Course.countDocumentsDeleted()])
+        let characterQuery = Course.find({})
+        // check if _sort exists in query
+        if (req.query.hasOwnProperty('_sort')){
+            // res.json({ message: 'successfully!'});
+            characterQuery = characterQuery.sort({
+                // name: 'asc'
+                // sort by query.column
+                [req.query.column]: req.query.type,
+            })
+        }
+
+        Promise.all([characterQuery, Course.countDocumentsDeleted()])
             .then(([courses, deletedCount]) =>
                 res.render('me/stored-characters', {
                     deletedCount,
