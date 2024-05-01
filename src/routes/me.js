@@ -5,6 +5,7 @@ const meController = require('../app/controllers/MeController');
 
 // [GET] /me/......(mấy thằng get dưới)
 router.get('/stored/characters', meController.storedCharacters);
+router.get('/stored/news', meController.newsCharacters);
 router.get('/deleted/characters', meController.deletedCharacters);
 
 module.exports = router;
