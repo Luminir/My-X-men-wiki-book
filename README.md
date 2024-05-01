@@ -2,9 +2,10 @@
 #### Video Demo:  <https://www.youtube.com/watch?v=QmBtl5Ugj8c>
 #### HOW TO RUN: npm start (in terminal)
 #### Description:
-This project is based on NodeJS, ExpressJS and mongolDB. I used a lot of extensions, sorry, I didn't remember, because I did this before reading the last project guide. ( it contains like: npm-watch, mongoose-delete-npm, npm)
 
-I'm web developer ( not that new) so I used the "MVC model": like this: 
+**1** This project is based on NodeJS, ExpressJS and mongolDB. I used a lot of extensions, sorry, I didn't remember, because I did this before reading the last project guide. ( it contains like: npm-watch, mongoose-delete-npm, npm)
+
+**2**  I'm web developer ( not that new) so I used the "MVC model": like this: 
 https://minhtringuyen.info/static/mo-hinh-mvc-2-6122e73042b1e282de2261bc3475dde5-edd43.png
 
 My src folder contains:
@@ -25,11 +26,13 @@ My src folder contains:
  - scss folder: aka my CSS files
  - view folder:  ----courses_______create.hbs: create new 'character' HTML
                |            |______edit.hbs: similar to create, but it's about updating the 'character's info' HTML when 'update' button triggered
+               |            |
                |            |______show.hbs: when click on the character, we see all the info of the character HTML
                |
                |------layouts:____main.hbs: the outline, head of HTML like in jinja, like 'layout.html'
                |
                |-------me: _______deleted-characters.hbs: deleting that character when 'delete' button triggered
+               |          |
                |          |_______news.hbs: news that I linked up in "my news"
                |          |_______stored-characters: containing all the created you characters
                |
