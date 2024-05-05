@@ -1,0 +1,108 @@
+[{
+  "_id": {
+    "$oid": "661bf84188c9b3611826ffda"
+  },
+  "name": "Wolverine",
+  "description": "He is a mutant with animal-keen senses, enhanced physical capabilities, a powerful healing factor, a skeleton with the unbreakable fictional metal adamantium, and three retractable claws in each hand.",
+  "image": "http://img.youtube.com/vi/8_ItGh7pKD8/sddefault.jpg",
+  "slug": "Wolverine-wiki",
+  "videoId": "8_ItGh7pKD8",
+  "level": "Beta",
+  "updatedAt": {
+    "$date": "2024-05-01T04:18:33.680Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66232e6475e82d35285e6b2a"
+  },
+  "name": "Domino",
+  "description": "Domino subconsciously generates a psionic aura around herself that alters probabilities, causing her to receive “good luck” while her opponents suffer “bad luck.”",
+  "image": "http://img.youtube.com/vi/_pwhxLD6-VQ/sddefault.jpg",
+  "videoId": "_pwhxLD6-VQ",
+  "level": "Alpha",
+  "createdAt": {
+    "$date": "2024-04-20T02:54:28.248Z"
+  },
+  "updatedAt": {
+    "$date": "2024-04-29T15:19:57.477Z"
+  },
+  "slug": "domino",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66233237356b9b2798247b61"
+  },
+  "name": "Professor X",
+  "description": "Professor X's powers include telepathy, the ability to read and control minds, as well as telekinesis, the ability to move objects with his mind.",
+  "image": "http://img.youtube.com/vi/WcIP-xfx3Fw/sddefault.jpg",
+  "videoId": "WcIP-xfx3Fw",
+  "level": "Alpha",
+  "createdAt": {
+    "$date": "2024-04-20T03:10:47.444Z"
+  },
+  "updatedAt": {
+    "$date": "2024-04-29T05:07:03.009Z"
+  },
+  "slug": "professor-x",
+  "__v": 0,
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "66233340d7f59ae7aebb3cc1"
+  },
+  "name": "Storm",
+  "description": "Storm is one of the most powerful mutants on Earth and has demonstrated a plethora of abilities, most of which are facets of her power to manipulate the weather.",
+  "image": "http://img.youtube.com/vi/QC56x2e22aQ/sddefault.jpg",
+  "videoId": "QC56x2e22aQ",
+  "level": "Omega",
+  "createdAt": {
+    "$date": "2024-04-20T03:15:12.984Z"
+  },
+  "updatedAt": {
+    "$date": "2024-04-29T04:59:27.031Z"
+  },
+  "slug": "storm",
+  "__v": 0,
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "663103e070485a136d4b1136"
+  },
+  "name": "Cable",
+  "description": "Cable has incredible telepathic and telekinetic abilities. He can telepathically read most minds, manipulate others’ thoughts and bodies, shield his own mind against probing, levitate telekinetically, and disassemble or move other objects or beings.",
+  "image": "http://img.youtube.com/vi/bRJbu32df-Y/sddefault.jpg",
+  "videoId": "bRJbu32df-Y",
+  "level": "Alpha",
+  "deleted": false,
+  "createdAt": {
+    "$date": "2024-04-30T14:44:48.521Z"
+  },
+  "updatedAt": {
+    "$date": "2024-04-30T14:44:48.521Z"
+  },
+  "slug": "cable",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6631bd99731095f6ddb74cd8"
+  },
+  "name": "Cyclops",
+  "description": "Cyclops (real name: Scott Summers) is a mutant capable of generating concussive force-based, red-colored beams from his eyes. He has fought for peace and equality between humans and mutants ever since joining the X-Men.",
+  "image": "http://img.youtube.com/vi/RtKycHnYLvg/sddefault.jpg",
+  "videoId": "RtKycHnYLvg",
+  "level": "Alpha",
+  "deleted": false,
+  "createdAt": {
+    "$date": "2024-05-01T03:57:13.788Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-01T04:26:09.360Z"
+  },
+  "slug": "cyclops",
+  "__v": 0
+}]
